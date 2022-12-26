@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <meta name="theme-color" content="#fff">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Project Uts</title>
+  
+  
+  
+  
+  <link rel="stylesheet" href="framework7/framework7-bundle.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    
+    <div class="panel panel-left panel-cover ">
+      <div class="list simple-list ">
+        <div class="list-group ">
+          <ul>
+            <li class="list-group-title">Recipes</li>
+            <li><a href="/listrecipes" class="panel-close text-color-black">Recipes</a></li>
+            <li><a href="/newrecipe" class="panel-close text-color-black">Add Recipe</a></li>
+            <li><a href="/myrecipe" class="panel-close text-color-black">My Recipe</a></li>
+            <li><a href="/favoriterecipe" class="panel-close text-color-black">My Favourites</a></li>
+
+
+          </ul>
+        </div>
+        <div class="list-group">
+          <ul>
+            <li class="list-group-title">My Account</li>
+            <li>Setting</li>
+            <li>FaQ</li>
+            <li><a href="/login" class="panel-close" id="btnlogout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main view-init safe-areas">
+      <div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar ">
+          <div class="navbar-bg bg-color-teal"></div>
+          <div class="navbar-inner sliding">
+            <div class="left">
+              <a href="#" class="panel-open color-white" data-panel=".panel-left">
+                <i class="f7-icons ">bars</i>
+              </a>
+            </div>
+            <div class="title " style="color: white; ">Let's Cook</div>
+          </div>
+        </div>
+        <!-- Toolbar-->
+        <!-- <div class="toolbar toolbar-bottom">
+          <div class="toolbar-inner">
+            <a href="#" class="link">Left Link</a>
+            <a href="#" class="link">Right Link</a>
+          </div>
+        </div> -->
+        <!-- Scrollable page content-->
+        <div class="page-content">
+          <div class="block">
+            <form class="searchbar">
+              <div class="searchbar-inner">
+                <div class="searchbar-input-wrap">
+                  <input type="text" id='cari' placeholder="Search" />
+                  <i class="searchbar-icon"></i>
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </form>
+            <div class="block-title">Recent</div>
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="2"
+              class="swiper-container swiper-init demo-swiper">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper" id="recent">
+
+              </div>
+            </div>
+
+            <div class="block-title">Category</div>
+            <div class="col">
+              <div class=" card"
+                style="background-image:url(https://awsimages.detik.net.id/api/wm/2021/04/25/cara-membuat-makanan-lebih-sehat-3_169.jpeg?wid=54&w=200&v=1&t=jpeg)">
+                <div class="card-content card-content-padding text-color-black"><b>Healty</b> </div>
+              </div>
+              <div class=" card"
+                style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBMYiJglf5focCVqxZePpnNX2cd207kI5YBA&usqp=CAU)">
+                <div class="card-content card-content-padding text-color-black"><b>Snack</b> </div>
+              </div>
+              <div class=" card"
+                style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIos3PQYwsF6NLs_iVnHlzzoIspyFVZtFAVQ&usqp=CAU)">
+                <div class="card-content card-content-padding text-color-black"><b>Desert</b></div>
+              </div>
+              <div class=" card"
+                style="background-image:url(https://lh3.googleusercontent.com/proxy/Hp5kw4i7TwDS54yDeGYf6A8W7Z98YK-s7eybpwjJLmw008wf36aL3BSmAQ0xbHGU8z6QDX7GI6j-YIG6YAy18R3Bqf_Ad56Y-HCEvxYAKQ2gfGBQBR2F)">
+                <div class="card-content card-content-padding text-color-black"><b>Drink</b></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- CORDOVA_PLACEHOLDER_DONT_REMOVE -->
+  <!-- Framework7 library -->
+  <script src="framework7/framework7-bundle.min.js"></script>
+  <!-- Cordova APIs -->
+  <script src="js/cordova-app.js"></script>
+  
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+  <!-- App store -->
+  <script src="js/store.js"></script>
+  <!-- App scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
