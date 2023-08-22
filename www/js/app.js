@@ -69,7 +69,7 @@ var app = new Framework7({
           localStorage.removeItem("username");
 
           $('#btnsignin').on('click',function() {
-            app.request.post("http://ubaya.fun/hybrid/160719052/recipes/login.php", 
+            app.request.post("http://localhost/recipes/login.php", 
                              { 
                                 "user_id": $('#username').val(), 
                                 "user_password": $('#password').val() 
@@ -94,7 +94,7 @@ var app = new Framework7({
             var e = $('#email').val();
             var u = $('#uname').val();
             var p=  $('#pwd').val();
-            app.request.post("http://ubaya.fun/hybrid/160719052/recipes/signup.php", 
+            app.request.post("http://localhost/recipes/signup.php", 
                  { 'name': n, 'email': e, 'username': u, 'password':p },  
                  function(data) {
                     var arr = JSON.parse(data);
@@ -107,7 +107,7 @@ var app = new Framework7({
             });
           });
         }else if(page.name == 'newrecipe') {
-          app.request.post("http://ubaya.fun/hybrid/160719052/recipes/difficulty.php", {}, function(data) {
+          app.request.post("http://localhost/recipes/difficulty.php", {}, function(data) {
             var arr = JSON.parse(data);
             difficulty=arr['data'];
 
@@ -181,7 +181,7 @@ var app = new Framework7({
 
             var g=$('#tx_gambar').val();
       
-            app.request.post("http://ubaya.fun/hybrid/160719052/recipes/newrecipe.php", 
+            app.request.post("http://localhost/recipes/newrecipe.php", 
                  { 'judul': t,'gambar':g, 'durasi': ct, 'deskripsi': d, 'difficulty_id':$("#sel_difficulty").val() , 'username':author, 'ingredients':arr_bahan, 'jmlh_bahan':li, 'steps':arr_step, 'jmlh_step':li2}, 
                  function(data) {
                     var arr = JSON.parse(data);
@@ -198,7 +198,7 @@ var app = new Framework7({
 
 
         }else if(page.name == 'listrecipes'){
-          var url = "http://ubaya.fun/hybrid/160719052/recipes/listrecipes.php";
+          var url = "http://localhost/recipes/listrecipes.php";
           app.request.post(url, {}, function (data) {
             var json = JSON.parse(data);
             recipes = json['data'];
@@ -216,7 +216,7 @@ var app = new Framework7({
         }else if(page.name == 'detailrecipe'){
           var id_recipe= page.router.currentRoute.params.id;
           // alert(id_recipe);
-          app.request.post("http://ubaya.fun/hybrid/160719052/recipes/detailrecipe.php", {'id':id_recipe}, function(data) {
+          app.request.post("http://localhost/recipes/detailrecipe.php", {'id':id_recipe}, function(data) {
             var arr = JSON.parse(data);
             recipe=arr['data'];
             $('#content_atas').html(
@@ -239,7 +239,7 @@ var app = new Framework7({
 
           });
           $('#btnfavorite').on('click',function () {
-            app.request.post("http://ubaya.fun/hybrid/160719052/recipes/addfavorite.php", 
+            app.request.post("http://localhost/recipes/addfavorite.php", 
                  { 'username':localStorage.getItem("username") , 'recipe_id':id_recipe }, 
                  function(data) {
                     var arr = JSON.parse(data);
@@ -253,7 +253,7 @@ var app = new Framework7({
             });
           });
         }else if(page.name == 'discovery'){
-          var url = "http://ubaya.fun/hybrid/160719052/recipes/listrecipes.php";
+          var url = "http://localhost/recipes/listrecipes.php";
 
           $('#btncari').on('click', function () {
             var c = $('#txtcari').val();
@@ -269,7 +269,7 @@ var app = new Framework7({
             
           });
         }else if(page.name == 'myrecipe'){
-          var url = "http://ubaya.fun/hybrid/160719052/recipes/myrecipe.php";
+          var url = "http://localhost/recipes/myrecipe.php";
           app.request.post(url, {'username':localStorage.getItem("username")}, function (data) {
             var json = JSON.parse(data);
             recipes = json['data'];
@@ -290,7 +290,7 @@ var app = new Framework7({
         }else if(page.name == 'detailrecipe2'){
           var id_recipe= page.router.currentRoute.params.id;
           // alert(id_recipe);
-          app.request.post("http://ubaya.fun/hybrid/160719052/recipes/detailrecipe.php", {'id':id_recipe}, function(data) {
+          app.request.post("http://localhost/recipes/detailrecipe.php", {'id':id_recipe}, function(data) {
             var arr = JSON.parse(data);
             recipe=arr['data'];
             $('#content_atas').html(
@@ -319,7 +319,7 @@ var app = new Framework7({
                       );
             });
             $('#btndelete').on('click',function () {
-            app.request.post("http://ubaya.fun/hybrid/160719052/recipes/deleterecipe.php", 
+            app.request.post("http://localhost/recipes/deleterecipe.php", 
                  { 'recipe_id':id_recipe }, 
                  function(data) {
                     var arr = JSON.parse(data);
@@ -341,7 +341,7 @@ var app = new Framework7({
           });
         }else if(page.name == 'editrecipe') {
           var id_recipe= page.router.currentRoute.params.id;
-          app.request.post("http://ubaya.fun/hybrid/160719052/recipes/detailrecipe.php", {'id':id_recipe}, function(data) {
+          app.request.post("http://localhost/recipes/detailrecipe.php", {'id':id_recipe}, function(data) {
             var arr = JSON.parse(data);
             recipe=arr['data'];
              $('#tx_title').val(recipe[0]['judul']);
@@ -350,7 +350,7 @@ var app = new Framework7({
              $('#tx_gambar').val(recipe[0]["gambar"]);
              
           });
-          app.request.post("http://ubaya.fun/hybrid/160719052/recipes/difficulty.php", {}, function(data) {
+          app.request.post("http://localhost/recipes/difficulty.php", {}, function(data) {
             var arr = JSON.parse(data);
             difficulty=arr['data'];
 
@@ -423,7 +423,7 @@ var app = new Framework7({
             });
 
       
-            app.request.post("http://ubaya.fun/hybrid/160719052/recipes/editrecipe.php", 
+            app.request.post("http://localhost/recipes/editrecipe.php", 
                  { 'judul': t, 'durasi': ct, 'deskripsi': d, 'username':author, 'difficulty_id':$("#sel_difficulty").val() ,  'ingredients':arr_bahan, 'jmlh_bahan':li, 'steps':arr_step, 'jmlh_step':li2, 'recipe_id':id_recipe},
                  function(data) {
                     var arr = JSON.parse(data);
@@ -446,7 +446,7 @@ var app = new Framework7({
 
         }else if(page.name == 'favoriterecipe'){
           var author= localStorage.getItem("username");
-          var url = "http://ubaya.fun/hybrid/160719052/recipes/favorite.php";
+          var url = "http://localhost/recipes/favorite.php";
           app.request.post(url, {'username':author}, function (data) {
             var json = JSON.parse(data);
             recipes = json['data'];
